@@ -1,12 +1,20 @@
 def find_duplicates_nested_loop(l: list) -> list:
     unique = []
+    original_index = []
     duplicates = []
-    for i in l:
-        if (duplicates.count(i) > 0): # it has already been acounted for ignore it
-            continue
-        elif (unique.count(i) > 0): # it has already been accounted for once before
-            duplicates.append(i)
-        unique.append(i) # add it to the unique list (I FORGOT THIS INITIALLY)
+    #for i in len(l):
+    #    for j in len(unique):
+    #        for k in len(duplicates):
+    #            if (i == j): # they are the same 
+    #        if (duplicates.count(i) > 0): # it has already been acounted for ignore it
+    #            continue
+    #        elif (unique.count(i) > 0): # it has already been accounted for once before
+    #            duplicates.append(i)
+    #        unique.append(i) # add it to the unique list (I FORGOT THIS INITIALLY)
+    for i in range(len(l)):
+        for j in range(i + 1, len(l)): # start after the number we are at, and see if anything after matches
+            if l[i] == l[j] and l[i] not in duplicates:
+                duplicates.append(l[i])
     return duplicates
 
 if __name__ == "__main__":
